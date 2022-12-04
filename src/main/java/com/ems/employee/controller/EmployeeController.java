@@ -40,7 +40,7 @@ public class EmployeeController {
 	@PutMapping("/employees")
 	public ResponseEntity<Employee> updateEmployee( @RequestBody Employee employee) {
 		employeeService.updateEmployee(employee);
-		return new ResponseEntity<Employee>(employee, HttpStatus.OK);
+		return new ResponseEntity<>(employee, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/employees/{empId}")
