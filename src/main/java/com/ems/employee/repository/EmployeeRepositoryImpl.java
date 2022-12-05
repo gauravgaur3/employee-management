@@ -11,7 +11,7 @@ import com.ems.employee.entity.Employee;
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
 	// List of employee object need to be created here
-	private static List<Employee> employees = new ArrayList<>(Arrays.asList(new Employee(982l, "Vijay", "Kumar", 32, 360),new Employee(983l, "James", "Smith", 34, 350),new Employee(984l, "james", "Johnson", 36, 370)));
+	public static List<Employee> employees = new ArrayList<>(Arrays.asList(new Employee(982l, "Vijay", "Kumar", 32, 360),new Employee(983l, "James", "Smith", 34, 350),new Employee(984l, "james", "Johnson", 36, 370)));
 	
 	// Get all employees
 	@Override

@@ -48,7 +48,9 @@ class EmployeeManagementSystemApplicationTests {
 	public void updateEmployeesTest(){
 		Employee employee = new Employee(999l, "Saurav", "Kumar", 32, 360);
 		when(repository.save(employee)).thenReturn(employee);
-		assertEquals(employee, service.updateEmployee(employee));
+		Employee employee2 = new Employee(999l, "Gaurav", "Gaur", 32, 360);
+		when(repository.save(employee2)).thenReturn(employee2);
+		assertEquals(employee2, service.updateEmployee(employee2));
 	}
 
 }

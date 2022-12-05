@@ -38,9 +38,9 @@ public class EmployeeController {
 	
 
 	@PutMapping("/employees")
-	public ResponseEntity<Employee> updateEmployee( @RequestBody Employee employee) {
+	public ResponseEntity<Void> updateEmployee( @RequestBody Employee employee) {
 		employeeService.updateEmployee(employee);
-		return new ResponseEntity<>(employee, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@DeleteMapping("/employees/{empId}")
