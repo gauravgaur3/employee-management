@@ -1,13 +1,14 @@
 package com.ems.employee;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -71,8 +72,9 @@ public class  ControllerTest{
 	{
 		MockHttpServletRequest request = new MockHttpServletRequest();
 		RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
-		long empId = 911l;
-		when(employeeService.removeEmployee(empId)).thenReturn(new Employee(911l, "Gaurav", "Gaur", 32, 360));
+		long empId = 999l;
+		employeeService.removeEmployee(empId);
+		verify(employeeService,times(1)).removeEmployee(empId);
 		ResponseEntity<Void> responseEntity = employeeController.deleteEmployee(empId);
 		assertThat(responseEntity.getStatusCode().value()).isEqualTo(204);
 	}

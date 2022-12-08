@@ -1,15 +1,11 @@
 package com.ems.employee.repository;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.ems.employee.entity.Employee;
 
-public interface EmployeeRepository {
-	
-	List<Employee> findAll();
-
-	Employee deleteById(long empId);
-
-	Employee save(Employee employee);
+@Repository
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 	
 }

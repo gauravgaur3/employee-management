@@ -2,8 +2,13 @@ package com.ems.employee.entity;
 
 import java.util.Objects;
 
-public class Employee {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+@Entity
+public class Employee {
+	
+	@Id
 	private Long empId;
 	private String firstName;
 	private String LastName;
@@ -11,6 +16,11 @@ public class Employee {
 	private double salary;
 	
 		
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Employee(Long empId, String firstName, String lastName, int age, double salary) {
 		super();
 		this.empId = empId;
@@ -19,7 +29,6 @@ public class Employee {
 		this.age = age;
 		this.salary = salary;
 	}
-	
 	
 	@Override
 	public int hashCode() {
