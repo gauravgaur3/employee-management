@@ -28,6 +28,11 @@ public class EmployeeController {
 	public List<Employee> getAllEmployees() {
 		return employeeService.getAllEmployees();
 	}
+	
+	@GetMapping("/employees/sort/{field}")
+	public List<Employee> sortEmployees(@PathVariable String field) {
+		return employeeService.sortEmployees(field);
+	}
 
 	@PostMapping("/employees")
 	public ResponseEntity<Void> addEmployee(@RequestBody Employee employee){
