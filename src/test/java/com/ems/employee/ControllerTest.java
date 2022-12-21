@@ -35,12 +35,9 @@ public class  ControllerTest{
 	   @Test
 	   public void getAllEmployeesControllerTest() {
 		   List<Employee> employees = new ArrayList<>(Arrays.asList(new Employee(911l, "Ajay", "Kumar", 32, 360),new Employee(912l, "Neeraj", "Smith", 34, 350)));
-	
 	       when(employeeService.getAllEmployees()).thenReturn(employees);
-	
 	       List<Employee> result = employeeController.getAllEmployees();
-	
-	       assertThat(result.size()).isEqualTo(2);
+	       assertThat(result).hasSize(2);
 	       assertThat(result.get(0).getFirstName()).isEqualTo(employees.get(0).getFirstName());
 	       assertThat(result.get(1).getFirstName()).isEqualTo(employees.get(1).getFirstName());
 	   }
@@ -77,6 +74,27 @@ public class  ControllerTest{
 		verify(employeeService,times(1)).removeEmployee(empId);
 		ResponseEntity<Void> responseEntity = employeeController.deleteEmployee(empId);
 		assertThat(responseEntity.getStatusCode().value()).isEqualTo(204);
+	}
+	
+	@Test
+	public void sortEmployeesByAge()
+	{
+		  List<Employee> employees = new ArrayList<>(Arrays.asList(new Employee(911l, "Ajay", "Kumar", 34, 360),new Employee(912l, "Neeraj", "Smith", 32, 350)));			
+	      when(employeeService.sortEmployeesByAge()).thenReturn(employees);
+	      List<Employee> result = employeeController.sortEmployeesByAge();
+	      assertThat(result).hasSize(2);
+	      assertThat(result.get(0).getAge()).isEqualTo(employees.get(0).getAge());
+	      assertThat(result.get(1).getAge()).isEqualTo(employees.get(1).getAge());
+	}
+	@Test
+	public void sortEmployeesByName()
+	{
+		List<Employee> employees = new ArrayList<>(Arrays.asList(new Employee(911l, "Ajay", "Kumar", 34, 360),new Employee(912l, "Neeraj", "Smith", 32, 350)));			
+		when(employeeService.sortEmployeesByName()).thenReturn(employees);
+		List<Employee> result = employeeController.sortEmployeesByName();
+		assertThat(result).hasSize(2);
+		assertThat(result.get(0).getFirstName()).isEqualTo(employees.get(0).getFirstName());
+		assertThat(result.get(1).getFirstName()).isEqualTo(employees.get(1).getFirstName());
 	}
     
 }

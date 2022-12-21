@@ -6,6 +6,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -56,7 +58,21 @@ class EmployeeManagementSystemApplicationTests {
 		assertEquals(employee, service.updateEmployee(employee2));
 	}
 	
-
-
+	@Test
+	public void sortEmployeesByAgeTest() {
+		List<Employee> actualList=new ArrayList<>(Stream.of(new Employee(983l, "James", "Smith", 36, 350),new Employee(984l, "james", "Johnson", 34, 370)).collect(Collectors.toList()));
+		when(repository.findAllByOrderByAgeAsc()).thenReturn(Stream.of(new Employee(983l, "James", "Smith", 34, 350),new Employee(984l, "james", "Johnson", 36, 370)).collect(Collectors.toList()));
+		List<Employee> expectedEmployees = service.sortEmployeesByAge();
+		assertEquals(actualList.get(1).getAge(),expectedEmployees.get(0).getAge());
+		
+	}
+	@Test
+	public void sortEmployeesByNameTest() {
+		List<Employee> actualList=new ArrayList<>(Stream.of(new Employee(983l, "Rahul", "kumar", 36, 350),new Employee(984l, "Gaurav", "Gaur", 34, 370)).collect(Collectors.toList()));
+		when(repository.findAllByOrderByFirstNameAsc()).thenReturn(Stream.of(new Employee(983l, "Gaurav", "Gaur", 34, 350),new Employee(984l, "Rahul", "kumar", 36, 370)).collect(Collectors.toList()));
+		List<Employee> expectedEmployees = service.sortEmployeesByName();
+		assertEquals(actualList.get(1).getFirstName(),expectedEmployees.get(0).getFirstName());
+		
+	}
 
 }

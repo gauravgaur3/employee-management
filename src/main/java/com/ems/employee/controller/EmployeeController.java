@@ -29,9 +29,14 @@ public class EmployeeController {
 		return employeeService.getAllEmployees();
 	}
 	
-	@GetMapping("/employees/sort/{field}")
-	public List<Employee> sortEmployees(@PathVariable String field) {
-		return employeeService.sortEmployees(field);
+	@GetMapping("/employees/sort-age")
+	public List<Employee> sortEmployeesByAge() {
+		return employeeService.sortEmployeesByAge();
+	}
+	
+	@GetMapping("/employees/sort-name")
+	public List<Employee> sortEmployeesByName() {
+		return employeeService.sortEmployeesByName();
 	}
 
 	@PostMapping("/employees")

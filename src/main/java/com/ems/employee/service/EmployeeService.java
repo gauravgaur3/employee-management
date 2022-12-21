@@ -3,7 +3,6 @@ package com.ems.employee.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.ems.employee.entity.Employee;
@@ -20,10 +19,13 @@ public class EmployeeService{
 		return employeeRepository.findAll();
 	}
 	
-	public List<Employee> sortEmployees(String field) {
-		return employeeRepository.findAll(Sort.by(field));
+	public List<Employee> sortEmployeesByAge() {
+		return employeeRepository.findAllByOrderByAgeAsc();
 	}
-
+	
+	public List<Employee> sortEmployeesByName() {
+		return employeeRepository.findAllByOrderByFirstNameAsc();
+	}
 	
 	public void removeEmployee(long empId) {
 		employeeRepository.deleteById(empId);

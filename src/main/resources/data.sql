@@ -1,8 +1,8 @@
 insert into employee(emp_id, first_name,last_name,age,salary)
-values(982l, 'Vijay', 'Kumar', 32, 360);
+values(987l, 'Rahul', 'Kumar', 34, 360);
 
 insert into employee(emp_id, first_name,last_name,age,salary)
-values(983l, 'James', 'Smith', 34, 350);
+values(986l, 'Saurav', 'Kumar', 32, 350);
 
 insert into employee(emp_id, first_name,last_name,age,salary)
-values(984l, 'James', 'Johnson', 36, 370);
+values(988l, 'Gaurav', 'Gaur', 33, 370);
